@@ -69,7 +69,7 @@ def main():
     set1_1 = []
     set1_2 = []
 
-    for i in range(0, 200, 2):
+    for i in range(0, 400, 2):
         j = re.split('a_|.jpg',set1[i][0])
         if(j[1] == '2'):
             set1_2.append(int(j[0]))
@@ -79,7 +79,7 @@ def main():
     set1_1 = numpy.array(set1_1)
     print(set1_1.shape[0])
     indices1_1 = numpy.random.permutation(set1_1.shape[0])
-    training_idx1_1, test_idx1_1 = indices1_1[:25], indices1_1[25:]
+    training_idx1_1, test_idx1_1 = indices1_1[:50], indices1_1[50:]
     training1_1, test1_1 = set1_1[training_idx1_1], set1_1[test_idx1_1]
     print(training1_1)
     print(test1_1)
@@ -87,11 +87,11 @@ def main():
     set1_2 = numpy.array(set1_2)
     print(set1_2.shape[0])
     indices1_2 = numpy.random.permutation(set1_2.shape[0])
-    training_idx1_2, test_idx1_2 = indices1_2[:25], indices1_2[25:]
-    training1_2, test1_2 = set1_2[training_idx1_2], set1_2[test_idx1_2]
-    print(training1_2)
-    print(test1_2)
-    set1_array = numpy.vstack((training1_1,test1_1,training1_2,test1_2))
+    training_idx1_2, test_idx1_2 = indices1_2[:50], indices1_2[50:]
+    training1_2, test1_2 = set1_2[training_idx1_2].tolist(), set1_2[test_idx1_2].tolist()
+    print(len(training1_2))
+    print(len(test1_2))
+    set1_array = [training1_1,test1_1,training1_2,test1_2]
     print(set1_array)
 
     sort_set_1(set1_array)
@@ -107,7 +107,7 @@ def main():
     set2_4 = []
     set2_5 = []
 
-    for i in range(0, 200, 2):
+    for i in range(0, 400, 2):
         j = re.split('a_|.jpg',set2[i][0])
         if(int(set2[i][1]) == 1):
             set2_1.append(int(j[0]))
